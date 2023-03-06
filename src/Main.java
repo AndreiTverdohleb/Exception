@@ -1,5 +1,9 @@
 public class Main {
     public static void main(String[] args) {
+        validateCredentials("skypro", "123123", "123123");
+        validateCredentials("skypro!", "123123","123123");
+        validateCredentials("skypro", "123123","1231234");
+        validateCredentials("skyproskyproskyproskyproskypro", "123123","123123");
 
     }
 
@@ -26,13 +30,13 @@ public class Main {
     }
 
     private static void checkPassword(String password, String repeatPassword) {
-        if (hasLengthMoreThat(password, 20) || isNoneAlphanumeric(password) || stringsEquals(password, repeatPassword)) {
+        if (hasLengthMoreThat(password, 20) || isNoneAlphanumeric(password) || stringsNotEquals(password, repeatPassword)) {
             throw new WrongPasswordExeption("Password is wrong");
         }
     }
 
-    private static boolean stringsEquals(String value, String value2) {
-        return value.equals(value2);
+    private static boolean stringsNotEquals(String value, String value2) {
+        return !value.equals(value2);
     }
     private static boolean isNoneAlphanumeric(String string) {
         final String alphabet = "abcdefghijklmnopqrstuvwxyz123456789_";
